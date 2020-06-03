@@ -59,6 +59,7 @@ def spider_news():
 
 if __name__ == '__main__':
     print("spider of feng starts successfully")
+    spider_news()
     # 每一个小时跑一次爬虫
     schedule.every(1).hours.do(spider_news)
     while True:
