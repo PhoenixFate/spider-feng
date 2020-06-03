@@ -45,9 +45,9 @@ def spider_news():
 
     # json.loads 把字符串转成python类型
     json_result = json.loads(response.content.decode("utf-8"))
-
+    print("获得数据成功！")
     # pretty print
-    pprint(json_result)
+    # pprint(json_result)
     # pprint(json_result["data"]["dataList"]["contentsList"])
 
     # 保存一份在本地文件
