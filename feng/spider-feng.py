@@ -64,5 +64,3 @@ if __name__ == '__main__':
     schedule.every(1).hours.do(spider_news)
     while True:
         schedule.run_pending()
-
-    # spider_news()
