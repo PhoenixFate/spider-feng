@@ -32,6 +32,8 @@ def spider_news():
     # 首页新闻数据
     feng_index_url = "https://beta-api.feng.com/v1/content/list?pageCount=20&page=1&isEnd=no"
 
+    feng_data_url = "https://api.wfdata.club/v1/content/list?pageCount=20&page=2&isEnd="
+
     x_request_id = get_aes_code()
 
     headers = {
@@ -40,7 +42,7 @@ def spider_news():
         "X-Request-Id": x_request_id,
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36 Edg/83.0.478.37"}
 
-    response = session.get(url=feng_index_url, headers=headers)
+    response = session.get(url=feng_data_url, headers=headers)
     print(response.status_code)
 
     # json.loads 把字符串转成python类型
@@ -61,6 +63,6 @@ if __name__ == '__main__':
     print("spider of feng starts successfully")
     spider_news()
     # 每一个小时跑一次爬虫
-    schedule.every(1).hours.do(spider_news)
-    while True:
-        schedule.run_pending()
+    # schedule.every(1).hours.do(spider_news)
+    # while True:
+    #     schedule.run_pending()

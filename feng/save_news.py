@@ -9,11 +9,10 @@ def save_to_mongo(news_array):
     collection = db.fengNews  # 指定集合
     try:
         for news in news_array:
-            print("mongo get one news")
             create_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
             news["createTime"] = create_time
             result = collection.find_one({'tid': news["tid"]})
-            print(result)
+            # print(result)
             # 不存在 则插入
             if result is None:
                 print("insert one news")
