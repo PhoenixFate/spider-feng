@@ -31,30 +31,23 @@ def spider_news():
     session = requests.session()
     # 首页新闻数据
     feng_index_url = "https://beta-api.feng.com/v1/content/list?pageCount=20&page=1&isEnd=no"
-
     feng_data_url = "https://api.wfdata.club/v1/content/list?pageCount=20&page=2&isEnd="
-
     x_request_id = get_aes_code()
-
     headers = {
         "Origin": "https://www.feng.com",
         "Referer": "https://www.feng.com/",
         "X-Request-Id": x_request_id,
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36 Edg/83.0.478.37"}
-
     response = session.get(url=feng_data_url, headers=headers)
     print(response.status_code)
-
     # json.loads 把字符串转成python类型
     json_result = json.loads(response.content.decode("utf-8"))
     print("获得数据成功！")
     # pretty print
     # pprint(json_result)
     # pprint(json_result["data"]["dataList"]["contentsList"])
-
     # 保存一份在本地文件
     save_json(json_result)
-
     # 保存新闻json对象到mongo
     save_to_mongo(json_result["data"]["dataList"]["contentsList"])
 

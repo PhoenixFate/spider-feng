@@ -55,6 +55,6 @@ def get_news_detail(news):
                              response.content.decode('utf-8'))
     year = datetime.datetime.now().year
     data = {"message": message[0], "subject": subject_data, "introduction": introduction_data,
-            "update_time": str(year) + "-" + update_time[0][1:-1],
-            "tid": news["tid"]}
+            "updateTime": str(year) + "-" + update_time[0][1:-1],
+            "tid": news["tid"], "createTime": news["createTime"]}
     return data
