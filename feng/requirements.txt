@@ -6,3 +6,4 @@ openpyxl
 wheel
 pymongo
 schedule
+demjson
